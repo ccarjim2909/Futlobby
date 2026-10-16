@@ -2,6 +2,8 @@
 
 ### Funcionalidades Principales
 
+Con el planteamiento de nuestra aplicación como una herramienta enfocada a la organización de jugadores no profesionales de fútbol, indentificamos la necesidad de desarrollar estas funcionalidades para cubrir las necesidades de los usuarios:
+
 1.  El usuario puede registrarse con un perfil de jugador .
 
 2.  El usuario puede iniciar/cerrar sesión.
@@ -33,6 +35,12 @@
 15. El usuario puede visualizar la clasificación y ranking local de jugadores por zona.
 
 ### Priorización MoSCoW
+
+A partir del análisis MoSCoW, vamos a intentar establecer las prioridades de nuestro proyecto de plataforma para organizar a los jugadores, identificando que funcionalidades van a ser fundamentales para nuestro MVP.
+
+Así mismo, cuales se podrían considerar críticas sin ser 100% necesarios, los que se podrían unir para enriquecer y aportar valor adicional a nuestra propuesta.
+
+Por útimo, las funcionalidades que a pesar de que puedan resultar interesantes, serán inviables de implementar tras ponderar el esfuerzo que requeriría su desarrollo respecto al valor que dotan realmente a nuestra propuesta.
 
 #### Must Have (Indispensables)
 
@@ -80,7 +88,9 @@
 -   El usuario puede reservar pistas de forma directa a través de la plataforma.
 
 
-#### MVP (Minimum Viable Product - Mínimo Producto Viable)
+### MVP (Minimum Viable Product - Mínimo Producto Viable)
+
+El MVP (Minimum Viable Product o Producto Mínimo Viable) es el concepto mas básico de nuestra propuesta. Una versión de la aplicación con el menor número posible de funcionalidades, que nos permite llevar a cabo un a prueba en la que evaluar correctamente el valor que aporta nuestra aplicación con usuarios reales y que responda a una pregunta crítica: ¿Realmente alguien necesita lo que nos disponemos a construir?
 
 -   Registro e Inicio de sesión: El usuario crea su perfil de jugador y accede al menú principal.
 
@@ -91,6 +101,9 @@
 
 # 2.  Análisis de requisitos técnicos.
 
+En esta sección vamos a hacer un ejercicio de valoración de qué recursos tenemos a nuestra disposición y si podremos suplir las necesidades planteadas usándolos.
+
+Vamos a llevar a cabo una investigación rápida sobre librerias que puedan satisfacer las necesidades técnicas del proyecto, de acuerdo a la complejidad y magnitud de los objetivos a cumplir.
 
 ### Frontend (React SPA)
 
@@ -191,6 +204,9 @@
 
 # 3.  Evaluación de capacidades del equipo.
 
+Al igual hemos valorado anteriormente los recursos a nuestra disposición, vamos a valorar también nuestras propias capacidades usandolos.
+
+Es esencial llevar a cabo una autovaloración para poder organizar las tareas de forma satisfactoria, buscando agilizar el proceso de trabajo y minimizar riesgos, teniendo en cuanto tanto las habilidades blandas como las competencias técnicas.
 
 ### Inventario de habilidades
 
@@ -212,6 +228,8 @@ El grupo necesita adquirir conocimientos de las herramientas principales (MERN),
 Parecía tener buena viabilidad, pero después de la charla con el profesor, hemos identificado una falla a resolver en cuanto al tema de los datos de los polideportivos, necesitaremos encontrar la disponibilidad de las pistas.
 
 # 4.  Identificación de riesgos técnicos.
+
+Para acabar, vamos a valorar las dificultades técnicas, desafíos a los que tendremos que plantar cara tanto en el desarrollo como en el ciclo de vida útil de la aplicación.
 
 ### Análisis de riesgos
 
