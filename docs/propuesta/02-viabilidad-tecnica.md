@@ -26,41 +26,48 @@
 
 12. El usuario puede reservar pistas de forma directa a través de la plataforma.
 
-13. La aplicación puede enviar notificaciones de confirmación, avisos de plaza cubierta o cancelaciones.
+13. La aplicación envía de forma automática una notificación de decisión al organizador si quedan menos de 24 horas para el partido y el cupo mínimo de jugadores no se ha completado.
 
 14. El usuario puede consultar el historial de partidos jugados y cobros/pagos realizados.
 
 15. El usuario puede visualizar la clasificación y ranking local de jugadores por zona.
 
-### Priorización MoSCoWMust Have (Indispensables)
+### Priorización MoSCoW
+
+#### Must Have (Indispensables)
 
 -   El usuario puede registrarse con un perfil de jugador 
 
 -   El usuario puede iniciar/cerrar sesión.
 
--   El usuario puede crear un partido especificando fecha, hora, ubicación, tipo de fútbol (F5/F7) y plazas disponibles.
+-   El usuario con rol de organizador puede crear un partido especificando fecha, hora, ubicación manual de la pista (ya reservada externamente), tipo de fútbol (F5/F7) y plazas disponibles.
 
--   El usuario puede definir el precio total del campo y la cuota individual por jugador.
+-   El usuario con rol de organizador puede definir el precio total del campo y la cuota individual por jugador.
 
 -   El usuario puede buscar partidos públicos filtrando por ciudad/zona, fecha, horario y nivel requerido.
 
--   El usuario puede unirse a un partido público disponible realizando el pago de la plaza individual.
+-   El usuario puede unirse a un partido público disponible realizando el pago con tarjeta (simulado con Stripe API). El dinero se retiene de manera segura en la plataforma hasta que se valide la realización del partido para evitar fraudes.
+
 
 #### Should Have (Importantes)
 
--   El usuario puede cancelar la inscripción a un partido dentro del margen de tiempo permitido.
+-   El organizador puede cancelar la inscripción a un partido dentro del margen de tiempo permitido (24 horas).
 
--   El usuario puede visualizar los partidos disponibles en una lista y en un mapa interactivo.
+-   El usuario puede visualizar los partidos disponibles en una lista.
 
--   La aplicación puede enviar notificaciones de confirmación, avisos de plaza cubierta o cancelaciones.
+-   La aplicación puede enviar notificaciones de confirmación, avisos de plaza cubierta o cancelaciones, esto se usara usando Resend.
 
 -   El usuario puede valorar el nivel de juego de los rivales y compañeros al finalizar un partido.
 
 -   El usuario puede consultar el perfil de un jugador con su nivel medio ponderado y estadísticas básicas.
 
+-   Automatización mediante una tarea programada que, al faltar 24 horas para el partido si el cupo no está completo, envía una notificación por correo electrónico al organizador para que decida si sigue adelante o cancela (lo que activa la devolución automática de los fondos).
+
 #### Could Have (Deseables)
 
 -   El usuario puede registrar polideportivos e instalaciones deportivas con sus campos disponibles.
+
+-   El usuario puede visualizar los partidos disponibles en una lista y en un mapa interactivo (implementado con Leaflet y OpenStreetMap).
 
 -   El usuario puede filtrar partidos según nivel
 
@@ -75,13 +82,11 @@
 
 #### MVP (Minimum Viable Product - Mínimo Producto Viable)
 
--   Entrar a la aplicación > Registrarse con un usuario > Editar perfil
+-   Registro e Inicio de sesión: El usuario crea su perfil de jugador y accede al menú principal.
 
--   Iniciar sesión > Menú principal > Buscar partido > Filtro de selección > Escoger sesión (hora) > Comprobar participantes > Pagar cuota alquiler
+-   Flujo del Organizador: El usuario crea un partido rellenando un formulario con los datos (Fecha, hora, ubicación del polideportivo donde ya reservó, tipo de fútbol y plazas).
 
--   Iniciar sesión > Menú principal > Crear partido > Seleccionar pista > Reservar horario disponible > Etiquetas del partido (número de jugadores, duración etc) > Comprobar participantes > Pagar cuota alquiler
-
-
+-   Flujo del Jugador: El jugador busca partidos por su zona, selecciona el encuentro y realiza el pago con tarjeta mediante la pasarela en desarrollo. El dinero se registra y bloquea en el backend.
 
 
 # 2.  Análisis de requisitos técnicos.
