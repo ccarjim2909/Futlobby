@@ -199,15 +199,15 @@ Parecía tener buena viabilidad, pero después de la charla con el profesor, hem
 
 ### Análisis de riesgos
 
--   Base de datos: privacidad de los jugadores, acceso a métodos de pago
+-   Plazos de entrega: Dejar las últimas dos semanas del sprint reservadas exclusivamente para corrección de bugs y despliegue.
 
--   Potencial abuso de la plataforma: reservar horarios de forma indiscriminada, no proporcionar información real sobre el nivel de habilidad, etc.
+-   MERN: Que los conceptos de aprendizaje no queden completamente afianzados: Vamos a trabajar día a día descubriendo las nuevas herramientas y vamos a dedicar 2 semanas de aprendizaje.
 
--   Que los usuarios reserven a la misma vez en nuestra página y en la página municipal del ayuntamiento.
+-   Solicitud: Que dos usuarios se registren como último jugador en un partido a la vez: Bloquear el documento del partido durante la actualización de una plaza y aplicar una restricción.
 
--   Si por casualidad de la vida los participantes de un partido acaban entablando amistad un grupo grande, tal vez dejarían de usar la aplicación y se hablarian simplemente entre ellos
+-   Arranque de render: Enviar peticiones HTTP regulares al servidor de Render para evitar que la instancia gratuita entre en estado de suspensión.
 
--   Que los usuarios que no estén muy familiarizados con la interfaz de la web, puedan llegar a tener dificultades a la hora de interactuar con la aplicación.
+-   Interfaz: Que los usuarios que no estén muy familiarizados con la interfaz de la web, puedan llegar a tener dificultades a la hora de interactuar con la aplicación.
 
 ### Estrategia de mitigación
 
