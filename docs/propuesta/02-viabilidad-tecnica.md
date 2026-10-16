@@ -89,21 +89,27 @@
 
 ### Frontend (React SPA)
 
--   Navegación: react-router-dom para el enrutamiento del lado del cliente y la protección de rutas privadas (panel de usuario, creación de partidos).
+* **Navegación:** `react-router-dom`
+  * **Por qué:** Permite crear una Single Page Application (SPA) con navegación fluida sin recargar la página. Es fundamental para gestionar rutas dinámicas (como `/partidos/:id`), manejar vistas protegidas (redirigiendo al login si no hay sesión) y mantener la sincronización con la barra del navegador.
+* **Gestión de Estado Global:** `zustand`
+  * **Por qué:** Proporciona una solución de estado global extremadamente ligera, con poca sintaxis repetitiva (*boilerplate*). Es ideal para almacenar los datos del usuario autenticado, el token de acceso y los filtros activos sin provocar re-renderizados innecesarios en la interfaz.
+* **Interfaz y Estilos:** `tailwindcss` + `shadcn/ui`
+  * **Por qué:** `tailwindcss` permite maquetar rápido mediante clases de utilidad directamente en el HTML/JSX sin salir del contexto de desarrollo.
+* **Peticiones HTTP:** `axios`
+  * **Por qué:** Simplifica las peticiones a la API frente al `fetch` nativo. Su característica principal aquí son los **interceptores**, que permiten adjuntar automáticamente el token JWT en las cabeceras de cada solicitud saliente y manejar respuestas de error globales.
 
--   Gestión de Estado Global: zustand para un control ligero del estado de la sesión autenticada y filtros activos de búsqueda.
-
--   Interfaz y Estilos: tailwindcss junto a componentes de shadcn/ui para construir rápidamente una interfaz adaptable.
-
--   Peticiones HTTP: axios configurado con interceptores para adjuntar automáticamente el token JWT en cada solicitud.
+---
 
 ### Infraestructura y Despliegue
 
--   Frontend:  Vercel o Netlify. Plan Hobby/Free (Despliegue continuo con GitHub, SSL automático, 100 GB de transferencia mensual gratuita).
-
--   Backend:  Render (Plan Free Web Service, 512 MB RAM)
-
--   Base de datos:  MongoDB Atlas. Plan M0 Shared Cluster gratuito permanente
+* **Frontend:** Vercel o Netlify
+  * **Detalles del plan:** Plan Hobby/Free (Despliegue continuo integrado con GitHub, certificado SSL automático y 100 GB de transferencia de red mensual).
+* **Backend:** Render
+  * **Detalles del plan:** Plan Free Web Service (512 MB RAM).
+  * **Limitación clave:** El plan gratuito entra en modo *spin-down* (se "duerme") tras 15 minutos de inactividad. La primera petición que reciba tras este periodo tardará entre 30 y 50 segundos en responder mientras el servidor se reanuda, lo que impacta la latencia inicial del usuario.
+* **Base de Datos:** MongoDB Atlas
+  * **Detalles del plan:** Plan Cluster gratuito permanente.
+  * **Limitación clave:** Cuenta con un límite estricto de almacenamiento de **512 MB**, lo que exige optimizar el tamaño de los documentos, limitar el uso de logs almacenados en BD y evitar guardar imágenes o archivos binarios pesados (debiendo usar almacenamiento externo como Cloudinary o AWS S3).
 
 
 ### Backend (Node.js + Express)
@@ -112,64 +118,69 @@
 
 -   Control de Roles:
 
--   Jugador: Usuario base que busca, se une y valora partidos.
+    -   Jugador: Usuario base que busca, se une y valora partidos.
 
--   Organizador: Usuario que crea el evento y administra sus plazas.
+    -   Organizador: Usuario que crea el evento y administra sus plazas.
 
--   Administrador: Gestión de reportes, usuarios y catálogo de centros deportivos.
+    -   Administrador: Gestión de reportes, usuarios y catálogo de centros deportivos.
 
--   Servicios Externos e Integraciones:
+    -   Servicios Externos e Integraciones:
 
--   Resend / Nodemailer (Emails transaccionales): Envío de confirmaciones de reserva y recordatorios.
+    -   Resend / Nodemailer (Emails transaccionales): Envío de confirmaciones de reserva y recordatorios.
 
 ### Base de Datos (MongoDB + Mongoose)
 
 
-#### Colección: Usuarios
+#### Colección: usuarios
 
 | Campo | Tipo | Requerido | Notas / Restricciones |
 | :--- | :--- | :--- | :--- |
-| `id` | String | Sí | — |
+| `_id` | ObjectId | Sí | Identificador único genérico |
 | `nombre` | String | Sí | — |
 | `email` | String | Sí | Único (`unique`) |
 | `contraseñaHash` | String | Sí | — |
-| `ciudad` | String | Sí | — |
+| `ciudad` | String | Sí | Permite filtrar/sugerir partidos locales |
+| `nivel` | String | Sí | Ej. `'Principiante'`, `'Intermedio'`, `'Avanzado'` |
 
 
-#### Colección: Partidos
+#### Colección: pistas
 
 | Campo | Tipo | Requerido | Notas / Restricciones |
 | :--- | :--- | :--- | :--- |
-| `id_organizador` | ObjectId | Sí | Referencia a `Usuarios` `ìd` |
-| `modo` | String | Sí | Valores permitidos: `'F5'`, `'F7'`, `'F11'` |
-| `nombreLocalizacion` | String | Sí | Referencia a `Pistas` `nombre` |
-| `direccionLocalizacion` | String | Sí | Referencia a `Pistas` `direccion` |
-| `hora` | Date | Sí | — |
+| `_id` | ObjectId | Sí | Identificador único genérico |
+| `nombre` | String | Sí | — |
+| `direccion` | String | Sí | — |
+| `ciudad` | String | Sí | — |
+
+
+#### Colección: partidos
+
+| Campo | Tipo | Requerido | Notas / Restricciones |
+| :--- | :--- | :--- | :--- |
+| `_id` | ObjectId | Sí | Identificador único genérico |
+| `organizador_id` | ObjectId | Sí | Referencia (`ref`) a `usuarios` |
+| `pista_id` | ObjectId | Sí | Referencia (`ref`) a `pistas` |
+| `ciudad` | String | Sí | Desnormalizado o derivado de la pista para búsquedas rápidas |
+| `modo` | String | Sí | Valores: `'F5'`, `'F7'`, `'F11'` |
+| `nivel` | String | Sí | Nivel requerido para el partido |
+| `hora` | Date | Sí | Fecha y hora de inicio |
 | `precioTotal` | Number | Sí | — |
 | `precioPorJugador` | Number | Sí | — |
 | `maximoJugadores` | Number | Sí | — |
-| `jugadoresConfirmados` | Array | No | Array de jugadores inscritos |
-| `estadoPago` | String | No | Valores: `'pendiente'`, `'pagado'` (Valor por defecto: `'pendiente'`) |
-| `estado` | String | No | Valores: `'abierta'`, `'completa'`, `'cancelada'` (Valor por defecto: `'abierta'`) |
-
-
-#### Colección: Pistas
-
-| Campo | Tipo | Requerido | Notas / Restricciones |
-| :--- | :--- | :--- | :--- |
-| `id` | String | Sí | — |
-| `nombre` | String | Sí | — |
-| `direccion` | String | Sí | Único (`unique`) |
-| `ciudad` | String | Sí | — |
+| `jugadoresConfirmados` | Array[Object] | No | Subdocumentos para gestionar inscripciones e inscritos individuales |
+| `jugadoresConfirmados.$.usuario_id` | ObjectId | Sí | Referencia (`ref`) a `usuarios` |
+| `jugadoresConfirmados.$.estadoPago` | String | Sí | Valores: `'pendiente'`, `'pagado'` (Por defecto: `'pendiente'`) |
+| `jugadoresConfirmados.$.fechaInscripcion` | Date | Sí | Fecha en la que se unió el jugador |
+| `estado` | String | No | Valores: `'abierta'`, `'completa'`, `'cancelada'` (Por defecto: `'abierta'`) |
 
 
 
 | Nombre | Frontend | Backend | Base de datos | Despliegue |
 | :--- | :--- | :--- | :--- |:--- |
-| `Indalecio` | X |   |   | x |
-| `Daniel` | X | x |   | x |
-| `Cristian` | x | x | X | x |
-| `Jordi` | x | x | X | x |
+| `Indalecio` |  | X | X |   |
+| `Daniel` | X |   |   | X |
+| `Cristian` | X |  | X |   |
+| `Jordi` |  | X |   | X |
 
 
 
