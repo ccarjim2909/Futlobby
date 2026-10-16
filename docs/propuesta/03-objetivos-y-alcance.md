@@ -14,7 +14,7 @@ Conseguir que un grupo de personas desconocidas puedan crear una sala para juega
 | 03 | El porcentaje de partidos cancelados sea menos del 20% | Porcentaje de partidos cancelados respecto al total de partidos creados | Menos del 20% de partidos cancelados | Comprobándolo al final del primer mes calculando cuántos se cancelaron de todos los que se crearon |
 ## 2. Alcance
 ### El MVP
-[Enlace a la fase 2](docs/propuesta/03-objetivos-y-alcance.md)
+[Enlace a la fase 2](docs/propuesta/02-viabilidad-tecnica.md)
 ### Plataforma
 La plataforma que usaremos será el móvil ya que el desarrollo de una web responsiva con el stack MERN permite un despliegue inmediato en producción a través de Render y compatibilidad universal con cualquier sistema operativo.
 ### Usuarios y datos
