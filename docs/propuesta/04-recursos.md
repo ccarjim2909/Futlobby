@@ -1,15 +1,82 @@
 # Fase 4 · Recursos · <estudio>
 ## Introducción
 ## 1. Las personas
-### Roles técnicos
-  | Persona | Rol | De qué responde |
-### Responsables por módulo
-  | Módulo | Requisitos (RF) | Responsable | Apoyo |
-  | FRONTEND LEAD |  | Daniel | Indalecio |
-  | BACKEND LEAD |  | Indalecio | Cristian |
-  | DATABASE MANAGER |  | Cristian | Jordi |
-  | DESPLIEGUE |  | Jordi | Daniel |
-### Comunicación     (enlace al contrato)
+
+### Roles técnicos 
+
+<table>
+  <thead>
+    <tr>
+      <th>Persona</th>
+      <th>Rol</th>
+      <th>De qué responde</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Daniel</strong></td>
+      <td>Diseño</td>
+      <td>UI / UX</td>
+    </tr>
+    <tr>
+      <td><strong>Indalecio</strong></td>
+      <td>Programación</td>
+      <td>Código y API</td>
+    </tr>
+    <tr>
+      <td><strong>Cristian</strong></td>
+      <td>Arquitectura software</td>
+      <td>Estructura y modelo datos</td>
+    </tr>
+    <tr>
+      <td><strong>Jordi</strong></td>
+      <td>Mantenimiento</td>
+      <td>CI / CD</td>
+    </tr>
+  </tbody>
+</table>
+  
+### Responsables por módulo  
+<table>
+  <thead>
+    <tr>
+      <th>Módulo</th>
+      <th>Requisitos (RF)</th>
+      <th>Responsable</th>
+      <th>Apoyo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>FRONTEND LEAD</strong></td>
+      <td>Vistas e interfaz gráfica, integración API</td>
+      <td>Daniel</td>
+      <td>Indalecio</td>
+    </tr>
+    <tr>
+      <td><strong>BACKEND LEAD</strong></td>
+      <td>API RESTful y lógica</td>
+      <td>Indalecio</td>
+      <td>Cristian</td>
+    </tr>
+    <tr>
+      <td><strong>DATABASE MANAGER</strong></td>
+      <td>Esquemas, integridad y consultas</td>
+      <td>Cristian</td>
+      <td>Jordi</td>
+    </tr>
+    <tr>
+      <td><strong>DESPLIEGUE</strong></td>
+      <td>Automatización CI/CD, configuración server</td>
+      <td>Jordi</td>
+      <td>Daniel</td>
+    </tr>
+  </tbody>
+</table>
+
+### Comunicación
+
+[Canales de comunicación estipulados en el contrato.](https://github.com/ccarjim2909/Montad-vuestro-estudio/blob/main/docs/CONTRATO.md#:~:text=Comunicaci%C3%B3n9)
 
 ## 2. La tecnología
 ### Stack, servicios y APIs   (enlace a la fase 2)
