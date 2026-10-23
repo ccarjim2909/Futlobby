@@ -1,4 +1,4 @@
-# Fase 4 · Recursos · <estudio>
+# Fase 4 · Recursos · Futlobby
 
 ## Introducción
 Este documento detalla la asignación de recursos humanos y técnicos del equipo. Daniel, Indalecio, Cristian y Jordi desarrollan el proyecto distribuyéndose los módulos clave mediante un entorno basado en Node.js, Visual Studio Code y control de versiones en GitHub.
