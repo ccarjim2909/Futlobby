@@ -1,4 +1,4 @@
-# Contrato de equipo · <A0.2---Montad-vuestro-estudio>
+# Contrato de equipo · Futlobby
 
 ## Compromisos
 
