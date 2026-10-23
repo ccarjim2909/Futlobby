@@ -1,5 +1,4 @@
-
-# Fase 3 · Objetivos y alcance · <estudio>
+# Fase 3 · Objetivos y alcance · Futlobby
 ## Introducción
 
 En este documento se redacta los objetivos y alcance de nuestra aplicación
