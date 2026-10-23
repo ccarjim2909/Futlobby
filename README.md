@@ -26,3 +26,21 @@ Próximamente (UD1).
 * [Contrato](https://github.com/ccarjim2909/Montad-vuestro-estudio/blob/develop/docs/CONTRATO.md)  
 
 * [Propuesta](https://github.com/ccarjim2909/Montad-vuestro-estudio/blob/develop/docs/PROPUESTA.md)
+
+
+------
+------
+
+# Requisitos Adicionales de la Asignatura de Proyecto
+
+## Despliegue y Producción
+Próximamente
+
+## Capturas de Pantalla de la Aplicación
+Próximamente
+
+## Guía de Instalación para Desarrollo Local
+Próximamente
+
+## Documentación del Proyecto
+Próximamente
