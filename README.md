@@ -1,4 +1,4 @@
-# Equipo Salchichón
+# Equipo 6
 
 Vamos a desarrollar una aplicación de organización de equipos para jugadores casuales de fútbol.
 

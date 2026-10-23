@@ -1,4 +1,4 @@
-# Fase 1 · El problema · Equipo Salchichón
+# Fase 1 · El problema · Futlobby
 
 ## Introducción: 
 
