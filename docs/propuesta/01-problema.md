@@ -1,10 +1,13 @@
-# Idea Principal 
+# Fase 1 · El problema · Futlobby
 
-PLAYTOMIC:    
+## Introducción: 
 
-En muchos deportes de raqueta ya se han inventado aplicaciones en las que poniendo tus datos personales y estadísticas de juego, la aplicación te facilita tu nivel aproximado de juego y te facilita el nivel de los demás. Estas aplicaciones están diseñadas también para poder reservar pistas fácilmente y poder incluir jugadores en esa pista. La funcionalidad de la app por la que he pensado esto es la siguiente: Si el jugador que alquila la pone pública, cualquier jugador que esté interesado puede unirse pagando su parte, esto hace que los jugadores que no siempre consiguen jugar con las mismas personas, puedan jugar partidos y no depender de nadie.
+En muchos deportes de raqueta ya se han inventado aplicaciones en las que poniendo tus datos personales y estadísticas de juego, la aplicación te facilita tu nivel aproximado de juego y te facilita el nivel de los demás. 
+Estas aplicaciones están diseñadas también para poder reservar pistas fácilmente y poder incluir jugadores en esa pista. La funcionalidad de la app por la que he pensado esto es la siguiente: Si el jugador que alquila la pone pública, cualquier jugador que esté interesado puede unirse pagando su parte, esto hace que los jugadores que no siempre consiguen jugar con las mismas personas, puedan jugar partidos y no depender de nadie.
 
-### Adaptado al fútbol:   
+## La necesidad
+
+### El problema  
 
 Ahora mi propuesta es la creación de una web similar pero completamente orientada al fútbol, poder saber el nivel de los jugadores(que los propios rivales votan), que haya un ranking en escala, de jugadores que han jugado en los diferentes polideportivos de cada zona, ciudad, comunidad etc... y lo más importante poder unirse a partidos públicos con personas completamente desconocidas y que así las personas que no tengan 9 amigos para jugar, puedan disfrutar de un partido semanal.
 
@@ -30,10 +33,7 @@ Ahora mi propuesta es la creación de una web similar pero completamente orienta
 
 ### Conclusión
 
-Hemos decidido utilizar mi idea, ya que es la más facil de interpretar y de entender, es un tema que más o menos conocemos los cuatro y además es una idea original que de verdad no existe.
-
-# Persona 2
-----
+Hemos decidido utilizar esta idea, ya que es la más facil de interpretar y de entender, es un tema que más o menos conocemos los cuatro y además es una idea original que de verdad no existe.
 
 ## User Persona 1
 
@@ -42,17 +42,13 @@ Hemos decidido utilizar mi idea, ya que es la más facil de interpretar y de ent
 - Ciudad: Cadiz
 - Situación: Trabaja a jornada completa y juega al fútbol 7 con amigos.
 
-### Contexto
-Esta persona lleva varios años jugando al fútbol 7 con un grupo de amigos. Normalmente son unas 12-14 personas, pero conseguir que todos estén disponibles el mismo día se ha convertido en un problema.
+### ¿Quién es?
+Una persona con su propio trabajo y rutina, buscando poder jugar con otras personas de acuerdo a su propio horario.
 
-Aunque le gusta jugar, suele ser él quien se encarga de reservar el campo, crear el grupo de WhatsApp, confirmar quién viene y buscar sustitutos cuando alguien falla.
+### Necesidades
+Necesita una forma rápida de publicar las plazas disponibles de su partido y permitir que otros jugadores se incorporen, pagando directamente su parte.
 
-### Objetivos
-- Conseguir que los partidos se completen sin tener que perseguir a sus amigos.
-
-- Encontrar jugadores rápidamente cuando alguien cancela.
-
-- Reducir el tiempo que dedica a organizar cada partido.
+También necesita poder conocer aproximadamente el nivel de los jugadores antes de aceptarles en el partido.
 
 ### Frustraciones
 - Personas que confirman y cancelan a última hora.
@@ -65,10 +61,18 @@ Aunque le gusta jugar, suele ser él quien se encarga de reservar el campo, crea
 
 - Sentir que organizar el partido es casi un trabajo.
 
-### Necesidades
-Necesita una forma rápida de publicar las plazas disponibles de su partido y permitir que otros jugadores se incorporen, pagando directamente su parte.
+### Objetivos
+- Conseguir que los partidos se completen sin tener que perseguir a sus amigos.
 
-También necesita poder conocer aproximadamente el nivel de los jugadores antes de aceptarles en el partido.
+- Encontrar jugadores rápidamente cuando alguien cancela.
+
+- Reducir el tiempo que dedica a organizar cada partido.
+
+### Casos de uso
+Esta persona lleva varios años jugando al fútbol 7 con un grupo de amigos. Normalmente son unas 12-14 personas, pero conseguir que todos estén disponibles el mismo día se ha convertido en un problema.
+
+Aunque le gusta jugar, suele ser él quien se encarga de reservar el campo, crear el grupo de WhatsApp, confirmar quién viene y buscar sustitutos cuando alguien falla.
+
 
 ### Comportamiento digital
 Utiliza WhatsApp constantemente para organizar partidos y aplicaciones móviles para reservar pistas, restaurantes, transporte, etc. Está acostumbrado a realizar pagos y reservas desde el móvil.
@@ -76,18 +80,28 @@ Utiliza WhatsApp constantemente para organizar partidos y aplicaciones móviles 
 ----
 
 ## User Persona 2
-
 - Edad: 23 años
 - Ocupación: Estudiante de máster
 - Ciudad: San Fernando
 - Situación: Se ha mudado recientemente por estudios y todavía no tiene un grupo de amigos con el que jugar al fútbol.
 
-### Contexto
+### ¿Quién es?
 Esta persona lleva jugando al fútbol desde pequeño y le gusta jugar una o dos veces por semana. Ha perdido el contacto habitual con sus compañeros de fútbol.
 
-Tiene ganas de seguir jugando, pero no conoce a suficientes personas como para organizar un partido por su cuenta.
+### Necesidades
+Esta persona necesita una plataforma donde pueda consultar partidos públicos cercanos, conocer la fecha, ubicación y nivel aproximado, reservar una plaza y pagar únicamente su parte.
 
-De vez en cuando pregunta a compañeros de clase o conocidos si tienen algún partido, pero depende completamente de que alguien tenga una plaza libre.
+Además, las valoraciones de otros jugadores le permitirían saber qué nivel tiene el partido antes de apuntarse.
+
+### Frustraciones
+- Tener que depender de sus amigos o compañeros para poder jugar.
+  
+- Encontrar partidos con niveles demasiado diferentes.
+  
+- Que un partido se cancele porque no hay suficientes jugadores.
+  
+- Querer jugar un día concreto y no encontrar ninguna opción.
+
 
 ### Objetivos
 - Jugar al fútbol de forma habitual sin necesitar un grupo de amigos.
@@ -99,40 +113,27 @@ De vez en cuando pregunta a compañeros de clase o conocidos si tienen algún pa
 - Encontrar jugadores con un nivel similar al suyo.
 
 
-### Frustraciones
-- Tener que depender de sus amigos o compañeros para poder jugar.
+### Casos de uso
+Tiene ganas de seguir jugando, pero no conoce a suficientes personas como para organizar un partido por su cuenta.
 
-- Encontrar partidos con niveles demasiado diferentes.
-
-- Que un partido se cancele porque no hay suficientes jugadores.
-
-- Querer jugar un día concreto y no encontrar ninguna opción.
-
-### Necesidades
-Esta persona necesita una plataforma donde pueda consultar partidos públicos cercanos, conocer la fecha, ubicación y nivel aproximado, reservar una plaza y pagar únicamente su parte.
-
-Además, las valoraciones de otros jugadores le permitirían saber qué nivel tiene el partido antes de apuntarse.
+De vez en cuando pregunta a compañeros de clase o conocidos si tienen algún partido, pero depende completamente de que alguien tenga una plaza libre.
 
 ### Comportamiento digital
-Utiliza el móvil para prácticamente todo: redes sociales, deporte, reservas y pagos. Está acostumbrado a descubrir actividades a través de aplicaciones y no tiene problema en jugar con personas que no conoce previamente.
+Utiliza WhatsApp constantemente para organizar partidos y aplicaciones móviles para reservar pistas, restaurantes, transporte, etc. Está acostumbrado a realizar pagos y reservas desde el móvil.
 
-----
+A continuación se presenta la tabla comparativa con la información recopilada sobre el mercado y los competidores actuales:
 
-# Persona 3
+## 3. La competencia
 
-Playtomic: Empresa que tiene los mismos servicios pero únicamente esta asociada a los deportes de raqueta (como el padel)
+Vamos a realizar un breves análisis de los antecedentes y competidores que tendrá nuestra aplicación en el mercado actual.
 
-### Fortaleza: 
-- Es una aplicacion ampliamente conocida en todo el mundo por lo que si decidieran añadir los deportes de pelota sería una competencia directa
+| Solución / Competidor | Descripción | Qué hace bien (Fortalezas) | Qué hace mal / Puntos débiles (Oportunidades) |
+| --- | --- | --- | --- |
+| **Playtomic** | Empresa enfocada únicamente en deportes de raqueta (p. ej., pádel). | - Aplicación altamente conocida a nivel mundial.<br>- Gran alcance e infraestructura (competencia directa si añaden deportes de pelota). | - No cuentan con un sistema adaptado a deportes de pelota.<br>- Falta de conocimiento local de la dinámica de juego del entorno. |
+| **Otras apps (España y extranjero)** | Aplicaciones similares existentes fuera del ámbito local. | - Modelos de negocio validados en otros mercados. | - Sin presencia activa ni penetración en la zona de Cádiz. |
+| **Oportunidades** | Plataforma adaptada localmente para deportes de pelota y comunidad. | - Conocimiento profundo del entorno local y de lo que se juega en Cádiz.<br>- Sistema adaptado a deportes de pelota.<br>- Primeros en posicionarse (sin competencia directa actual en Cádiz). | - Menor alcance inicial comparado con plataformas globales consolidadas. |
 
-### Oportunidades:
-- Ellos no tienen ese sistema y nosotros si la tenemos porque tenemos mas conocimiento de lo que se juega en nuestro entorno
 
-Ahora mismo no hay ninguna competencia en Cádiz pero existen ese tipo de aplicaciones tanto en España como fuera.
-
-----
-
-# Persona 4
 
 ### Nuestra propuesta de valor
 

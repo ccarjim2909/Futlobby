@@ -1,154 +1,63 @@
-# 1.  Análisis de requisitos funcionales.
-
-### Funcionalidades Principales
-
-Con el planteamiento de nuestra aplicación como una herramienta enfocada a la organización de jugadores no profesionales de fútbol, indentificamos la necesidad de desarrollar estas funcionalidades para cubrir las necesidades de los usuarios:
-
-1.  El usuario puede registrarse con un perfil de jugador .
-
-2.  El usuario puede iniciar/cerrar sesión.
-
-3.  El usuario puede crear un partido especificando fecha, hora, ubicación, tipo de fútbol (F5/F7) y plazas disponibles.
-
-4.  El usuario puede definir el precio total del campo y la cuota individual por jugador.
-
-5.  El usuario puede buscar partidos públicos filtrando por ciudad/zona, fecha, horario y nivel requerido.
-
-6.  El usuario puede unirse a un partido público disponible realizando el pago de la plaza individual.
-
-7.  El usuario puede cancelar la inscripción a un partido dentro del margen de tiempo permitido.
-
-8.  El usuario puede valorar el nivel de juego de los rivales y compañeros al finalizar un partido.
-
-9.  El usuario puede consultar el perfil de un jugador con su nivel medio ponderado y estadísticas básicas.
-
-10. El usuario puede visualizar los partidos disponibles en una lista y en un mapa interactivo.
-
-11. El usuario puede registrar polideportivos e instalaciones deportivas con sus campos disponibles.
-
-12. El usuario puede reservar pistas de forma directa a través de la plataforma.
-
-13. La aplicación envía de forma automática una notificación de decisión al organizador si quedan menos de 24 horas para el partido y el cupo mínimo de jugadores no se ha completado.
-
-14. El usuario puede consultar el historial de partidos jugados y cobros/pagos realizados.
-
-15. El usuario puede visualizar la clasificación y ranking local de jugadores por zona.
-
-### Priorización MoSCoW
-
-A partir del análisis MoSCoW, vamos a intentar establecer las prioridades de nuestro proyecto de plataforma para organizar a los jugadores, identificando que funcionalidades van a ser fundamentales para nuestro MVP.
-
-Así mismo, cuales se podrían considerar críticas sin ser 100% necesarios, los que se podrían unir para enriquecer y aportar valor adicional a nuestra propuesta.
-
-Por útimo, las funcionalidades que a pesar de que puedan resultar interesantes, serán inviables de implementar tras ponderar el esfuerzo que requeriría su desarrollo respecto al valor que dotan realmente a nuestra propuesta.
-
-#### Must Have (Indispensables)
-
--   El usuario puede registrarse con un perfil de jugador 
-
--   El usuario puede iniciar/cerrar sesión.
-
--   El usuario con rol de organizador puede crear un partido especificando fecha, hora, ubicación manual de la pista (ya reservada externamente), tipo de fútbol (F5/F7) y plazas disponibles.
-
--   El usuario con rol de organizador puede definir el precio total del campo y la cuota individual por jugador.
-
--   El usuario puede buscar partidos públicos filtrando por ciudad/zona, fecha, horario y nivel requerido.
-
--   El usuario puede unirse a un partido público disponible realizando el pago con tarjeta (simulado con Stripe API). El dinero se retiene de manera segura en la plataforma hasta que se valide la realización del partido para evitar fraudes.
-
-
-#### Should Have (Importantes)
-
--   El organizador puede cancelar la inscripción a un partido dentro del margen de tiempo permitido (24 horas).
-
--   El usuario puede visualizar los partidos disponibles en una lista.
-
--   La aplicación puede enviar notificaciones de confirmación, avisos de plaza cubierta o cancelaciones, esto se usara usando Resend.
-
--   El usuario puede valorar el nivel de juego de los rivales y compañeros al finalizar un partido.
-
--   El usuario puede consultar el perfil de un jugador con su nivel medio ponderado y estadísticas básicas.
-
--   Automatización mediante una tarea programada que, al faltar 24 horas para el partido si el cupo no está completo, envía una notificación por correo electrónico al organizador para que decida si sigue adelante o cancela (lo que activa la devolución automática de los fondos).
-
-#### Could Have (Deseables)
-
--   El usuario puede registrar polideportivos e instalaciones deportivas con sus campos disponibles.
-
--   El usuario puede visualizar los partidos disponibles en una lista y en un mapa interactivo (implementado con Leaflet y OpenStreetMap).
-
--   El usuario puede filtrar partidos según nivel
-
--   El usuario puede consultar el historial de partidos jugados y cobros/pagos realizados.
-
-#### Won't Have (Fuera de alcance para esta versión)
-
--   El usuario puede visualizar la clasificación y ranking local de jugadores por zona.
-
--   El usuario puede reservar pistas de forma directa a través de la plataforma.
-
-
-### MVP (Minimum Viable Product - Mínimo Producto Viable)
-
-El MVP (Minimum Viable Product o Producto Mínimo Viable) es el concepto mas básico de nuestra propuesta. Una versión de la aplicación con el menor número posible de funcionalidades, que nos permite llevar a cabo un a prueba en la que evaluar correctamente el valor que aporta nuestra aplicación con usuarios reales y que responda a una pregunta crítica: ¿Realmente alguien necesita lo que nos disponemos a construir?
-
--   Registro e Inicio de sesión: El usuario crea su perfil de jugador y accede al menú principal.
-
--   Flujo del Organizador: El usuario crea un partido rellenando un formulario con los datos (Fecha, hora, ubicación del polideportivo donde ya reservó, tipo de fútbol y plazas).
-
--   Flujo del Jugador: El jugador busca partidos por su zona, selecciona el encuentro y realiza el pago con tarjeta mediante la pasarela en desarrollo. El dinero se registra y bloquea en el backend.
-
-
-# 2.  Análisis de requisitos técnicos.
-
-En esta sección vamos a hacer un ejercicio de valoración de qué recursos tenemos a nuestra disposición y si podremos suplir las necesidades planteadas usándolos.
-
-Vamos a llevar a cabo una investigación rápida sobre librerias que puedan satisfacer las necesidades técnicas del proyecto, de acuerdo a la complejidad y magnitud de los objetivos a cumplir.
-
-### Frontend (React SPA)
-
-* **Navegación:** `react-router-dom`
-  * **Por qué:** Permite crear una Single Page Application (SPA) con navegación fluida sin recargar la página. Es fundamental para gestionar rutas dinámicas (como `/partidos/:id`), manejar vistas protegidas (redirigiendo al login si no hay sesión) y mantener la sincronización con la barra del navegador.
-* **Gestión de Estado Global:** `zustand`
-  * **Por qué:** Proporciona una solución de estado global extremadamente ligera, con poca sintaxis repetitiva (*boilerplate*). Es ideal para almacenar los datos del usuario autenticado, el token de acceso y los filtros activos sin provocar re-renderizados innecesarios en la interfaz.
-* **Interfaz y Estilos:** `tailwindcss` + `shadcn/ui`
-  * **Por qué:** `tailwindcss` permite maquetar rápido mediante clases de utilidad directamente en el HTML/JSX sin salir del contexto de desarrollo.
-* **Peticiones HTTP:** `axios`
-  * **Por qué:** Simplifica las peticiones a la API frente al `fetch` nativo. Su característica principal aquí son los **interceptores**, que permiten adjuntar automáticamente el token JWT en las cabeceras de cada solicitud saliente y manejar respuestas de error globales.
-
----
-
-### Infraestructura y Despliegue
-
-* **Frontend:** Vercel o Netlify
-  * **Detalles del plan:** Plan Hobby/Free (Despliegue continuo integrado con GitHub, certificado SSL automático y 100 GB de transferencia de red mensual).
-* **Backend:** Render
-  * **Detalles del plan:** Plan Free Web Service (512 MB RAM).
-  * **Limitación clave:** El plan gratuito entra en modo *spin-down* (se "duerme") tras 15 minutos de inactividad. La primera petición que reciba tras este periodo tardará entre 30 y 50 segundos en responder mientras el servidor se reanuda, lo que impacta la latencia inicial del usuario.
-* **Base de Datos:** MongoDB Atlas
-  * **Detalles del plan:** Plan Cluster gratuito permanente.
-  * **Limitación clave:** Cuenta con un límite estricto de almacenamiento de **512 MB**, lo que exige optimizar el tamaño de los documentos, limitar el uso de logs almacenados en BD y evitar guardar imágenes o archivos binarios pesados (debiendo usar almacenamiento externo como Cloudinary o AWS S3).
-
-
-### Backend (Node.js + Express)
-
--   Autenticación y Autorización: Implementación de JSON Web Tokens (JWT) mediante cookies de tipo HttpOnly para evitar ataques XSS.
-
--   Control de Roles:
-
-    -   Jugador: Usuario base que busca, se une y valora partidos.
-
-    -   Organizador: Usuario que crea el evento y administra sus plazas.
-
-    -   Administrador: Gestión de reportes, usuarios y catálogo de centros deportivos.
-
-    -   Servicios Externos e Integraciones:
-
-    -   Resend / Nodemailer (Emails transaccionales): Envío de confirmaciones de reserva y recordatorios.
-
-### Base de Datos (MongoDB + Mongoose)
-
-
+# Fase 2 · Viabilidad técnica · Futlobby
+
+## Introducción
+Para hacer realidad nuestra plataforma de organización de partidos de fútbol amateur, desarrollaremos un MVP funcional utilizando el stack MERN (MongoDB, Express, React y Node.js). Tras evaluar los recursos disponibles y las capacidades del equipo, el proyecto es viable técnicamente, aunque el riesgo principal radica en la gestión de la disponibilidad de las pistas y la sincronización en tiempo real de las inscripciones concurrentes de los jugadores.
+
+## 1. Requisitos funcionales
+| ID | Requisito | MoSCoW |
+|---|---|---|
+| RF-01 | El usuario puede registrarse con un perfil de jugador | Must |
+| RF-02 | El usuario puede iniciar/cerrar sesión | Must |
+| RF-03 | El usuario con rol de organizador puede crear un partido especificando fecha, hora, ubicación manual de la pista, tipo de fútbol y plazas | Must |
+| RF-04 | El usuario con rol de organizador puede definir el precio total del campo y la cuota individual por jugador | Must |
+| RF-05 | El usuario puede buscar partidos públicos filtrando por ciudad/zona, fecha, horario y nivel requerido | Must |
+| RF-06 | El usuario puede unirse a un partido público disponible realizando el pago con tarjeta (simulado con Stripe API) reteniendo el dinero de forma segura | Must |
+| RF-07 | El organizador puede cancelar la inscripción a un partido dentro del margen de tiempo permitido (24 horas) | Should |
+| RF-08 | El usuario puede visualizar los partidos disponibles en una lista | Should |
+| RF-09 | La aplicación puede enviar notificaciones de confirmación, avisos o cancelaciones usando Resend | Should |
+| RF-10 | El usuario puede valorar el nivel de juego de los rivales y compañeros al finalizar un partido | Should |
+| RF-11 | El usuario puede consultar el perfil de un jugador con su nivel medio ponderado y estadísticas básicas | Should |
+| RF-12 | Automatización de tarea programada a las 24h del partido si el cupo no está completo para notificar al organizador | Should |
+| RF-13 | El usuario puede registrar polideportivos e instalaciones deportivas con sus campos disponibles | Could |
+| RF-14 | El usuario puede visualizar los partidos disponibles en una lista y en un mapa interactivo (Leaflet y OpenStreetMap) | Could |
+| RF-15 | El usuario puede filtrar partidos según nivel | Could |
+| RF-16 | El usuario puede consultar el historial de partidos jugados y cobros/pagos realizados | Could |
+| RF-17 | El usuario puede visualizar la clasificación y ranking local de jugadores por zona | Won't |
+| RF-18 | El usuario puede reservar pistas de forma directa a través de la plataforma | Won't |
+
+### El MVP
+#### Recorrido
+1. El usuario entra a la plataforma, se registra con su perfil de jugador e inicia sesión.
+2. El usuario organizador crea un partido rellenando los datos del encuentro (fecha, hora, ubicación de la pista ya reservada externamente, tipo de fútbol y plazas) y definiendo el precio.
+3. El jugador busca partidos por su zona, selecciona el encuentro deseado y realiza el pago con tarjeta mediante la pasarela integrada, bloqueando y registrando el dinero en el backend hasta completarse el cupo.
+
+#### Requisitos del MVP
+- RF-01, RF-02, RF-03, RF-04, RF-05 y RF-06 (Todos los correspondientes a la categoría Must Have).
+
+## 2. Requisitos técnicos
+### Frontend
+| Biblioteca | Para qué | Por qué esta |
+|---|---|---|
+| `react-router-dom` | Navegación SPA | Permite crear rutas dinámicas y vistas protegidas sin recargar la página. |
+| `zustand` | Gestión de estado global | Solución ligera y sin boilerplate para almacenar datos de usuario y filtros. |
+| `tailwindcss` + `shadcn/ui` | Interfaz y estilos | Clases de utilidad rápidas para maquetar directamente en el JSX. |
+| `axios` | Peticiones HTTP | Simplifica peticiones frente a fetch y permite usar interceptores para el token JWT. |
+
+### Backend
+#### Autenticación y roles
+- **Autenticación:** JSON Web Tokens (JWT) mediante cookies HttpOnly para prevenir ataques XSS.
+- **Roles:** 
+  - *Jugador:* Busca, se une y valora partidos.
+  - *Organizador:* Crea eventos y administra plazas.
+  - *Administrador:* Gestiona reportes, usuarios y centros deportivos.
+
+#### Servicios externos
+| Servicio | Para qué | Límite gratuito |
+|---|---|---|
+| Resend / Nodemailer | Envío de correos transaccionales (confirmaciones y recordatorios) | Plan gratuito disponible para correos transaccionales iniciales. |
+| Stripe API | Simulación de pagos seguros y retención de fondos | Tarifa por transacción estándar / modo pruebas gratuito. |
+
+### Base de datos
 #### Colección: usuarios
 
 | Campo | Tipo | Requerido | Notas / Restricciones |
@@ -192,67 +101,32 @@ Vamos a llevar a cabo una investigación rápida sobre librerias que puedan sati
 | `estado` | String | No | Valores: `'abierta'`, `'completa'`, `'cancelada'` (Por defecto: `'abierta'`) |
 
 
+### Infraestructura
+| Parte | Dónde se despliega | Condiciones del plan gratuito |
+|---|---|---|
+| Frontend | Vercel o Netlify | Plan Hobby/Free con despliegue continuo con GitHub, SSL automático y 100 GB/mes. |
+| Backend | Render | Plan Free Web Service (512 MB RAM). Entra en suspensión tras 15 minutos de inactividad (tarda 30-50s en despertar). |
+| Base de datos | MongoDB Atlas | Cluster gratuito permanente con límite estricto de 512 MB (requiere optimizar documentos y evitar archivos pesados). |
 
-| Nombre | Frontend | Backend | Base de datos | Despliegue |
-| :--- | :--- | :--- | :--- |:--- |
-| `Indalecio` |  | X | X |   |
-| `Daniel` | X |   |   | X |
-| `Cristian` | X |  | X |   |
-| `Jordi` |  | X |   | X |
+## 3. Capacidades del equipo
+### Inventario
+| Persona | React | Node + Express | MongoDB | Git |
+|---|---|---|---|---|
+| Indalecio | No | Sí | Sí | Sí |
+| Daniel | Sí | No | No | Sí |
+| Cristian | Sí | No | Sí | Sí |
+| Jordi | No | Sí | No | Sí |
 
+### Lagunas
+El grupo carece de dominio avanzado en el stack MERN completo al haber empezado recientemente el curso, por lo que requerirá investigación independiente y tiempo de aprendizaje diario.
 
+### ¿Es realista?
+Sí, el proyecto es viable y realista tras acotar el alcance del MVP, aunque requiere resolver el problema de la disponibilidad de pistas externas y afianzar las capacidades técnicas del equipo en las dos primeras semanas.
 
-# 3.  Evaluación de capacidades del equipo.
-
-Al igual hemos valorado anteriormente los recursos a nuestra disposición, vamos a valorar también nuestras propias capacidades usandolos.
-
-Es esencial llevar a cabo una autovaloración para poder organizar las tareas de forma satisfactoria, buscando agilizar el proceso de trabajo y minimizar riesgos, teniendo en cuanto tanto las habilidades blandas como las competencias técnicas.
-
-### Inventario de habilidades
-
--   Cristian: Conocimientos apropiados de bases de datos relaciones y algunos de no relaciones, conocimientos de programación básicos, título de SMR.
-
--   Indalecio: Conocimientos en cálculo avanzado, programación orientada a objetos y git/github.
-
--   Jordi:Conocimientos básicos de programación, experiencia en base de datos relacionales, y básicos de github.
-
--   Daniel: conocimientos de Diseño, manejo de programas suite Adobe. Desarrollo de la identidad visual de la marca.
-
-
-### Lagunas de conocimiento
-
-El grupo necesita adquirir conocimientos de las herramientas principales (MERN), dado que acabamos de empezar el curso y carecemos de estos conocimientos, aunque vamos a investigar por nuestra cuenta.
-
-### Viabilidad del proyecto
-
-Parecía tener buena viabilidad, pero después de la charla con el profesor, hemos identificado una falla a resolver en cuanto al tema de los datos de los polideportivos, necesitaremos encontrar la disponibilidad de las pistas.
-
-# 4.  Identificación de riesgos técnicos.
-
-Para acabar, vamos a valorar las dificultades técnicas, desafíos a los que tendremos que plantar cara tanto en el desarrollo como en el ciclo de vida útil de la aplicación.
-
-### Análisis de riesgos
-
--   Plazos de entrega: Dejar las últimas dos semanas del sprint reservadas exclusivamente para corrección de bugs y despliegue.
-
--   MERN: Que los conceptos de aprendizaje no queden completamente afianzados: Vamos a trabajar día a día descubriendo las nuevas herramientas y vamos a dedicar 2 semanas de aprendizaje.
-
--   Solicitud: Que dos usuarios se registren como último jugador en un partido a la vez: Bloquear el documento del partido durante la actualización de una plaza y aplicar una restricción.
-
--   Arranque de render: Enviar peticiones HTTP regulares al servidor de Render para evitar que la instancia gratuita entre en estado de suspensión.
-
--   Interfaz: Que los usuarios que no estén muy familiarizados con la interfaz de la web, puedan llegar a tener dificultades a la hora de interactuar con la aplicación.
-
-### Estrategia de mitigación
-
--   Proteger los datos personales mediante contraseñas cifradas, autenticación segura y permisos de acceso. Para los pagos, utilizar una pasarela externa y evitar almacenar información bancaria en nuestra base de datos.
-
--   Establecer límites de reservas por usuario, exigir el pago para confirmar las plazas y permitir valoraciones y reportes para detectar comportamientos inadecuados o niveles de juego falsos.
-
--   Comprobar si los polideportivos permiten consultar su disponibilidad en tiempo real mediante una API. Si no es posible, contactar con las instalaciones para buscar alternativas y mostrar claramente si una reserva está confirmada o pendiente.
-
--   Ofrecer funciones útiles para organizar partidos, gestionar pagos y repetir encuentros con amigos, además de facilitar la búsqueda de nuevos jugadores.
-
--   Diseñar una web intuitiva y adaptable a móviles, con procesos sencillos y mensajes claros. Realizar pruebas con usuarios para detectar y corregir problemas antes del lanzamiento.
-
-Prioridad principal: Resolver la disponibilidad de las pistas deportivas, ya que es el mayor problema para la viabilidad del proyecto. También será fundamental garantizar la seguridad de los datos y evitar las reservas abusivas.
+## 4. Riesgos técnicos
+| Riesgo | Tipo | Mitigación |
+|---|---|---|
+| Plazos de entrega y curva de aprendizaje MERN | Desarrollo / Tiempo | Reservar las dos últimas semanas exclusivamente para bugs/despliegue y dedicar tiempo diario al aprendizaje guiado. |
+| Concurrencia (Dos usuarios reservando la última plaza a la vez) | Concurrencia en BD | Bloquear el documento del partido durante la actualización de plaza y aplicar restricciones atómicas. |
+| Suspensión del servidor gratuito en Render | Infraestructura | Enviar peticiones HTTP periódicas o pings al servidor para evitar que entre en modo spin-down. |
+| Falta de disponibilidad en tiempo real de las pistas deportivas | Negocio / Datos | Permitir la ubicación manual de pistas ya reservadas externamente y revisar alternativas para el futuro. |
