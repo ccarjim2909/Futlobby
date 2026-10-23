@@ -21,6 +21,8 @@ Frontend React SPA, Node.js + Express, MongoDB + Mongoose.
 Próximamente (UD1).
 
 ## Enlaces
-[Tablero](https://github.com/users/ccarjim2909/projects/7)
-[Contrato](https://github.com/ccarjim2909/Montad-vuestro-estudio/blob/develop/docs/CONTRATO.md)
-[Propuesta](https://github.com/ccarjim2909/Montad-vuestro-estudio/blob/develop/docs/PROPUESTA.md)
+* [Tablero](https://github.com/users/ccarjim2909/projects/7)  
+
+* [Contrato](https://github.com/ccarjim2909/Montad-vuestro-estudio/blob/develop/docs/CONTRATO.md)  
+
+* [Propuesta](https://github.com/ccarjim2909/Montad-vuestro-estudio/blob/develop/docs/PROPUESTA.md)
