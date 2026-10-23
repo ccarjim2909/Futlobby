@@ -1,4 +1,4 @@
-# Propuesta de proyecto · Montad vuestro estudio
+# Propuesta de proyecto · Futlobby
 
 **Integrantes:** Daniel, Indalecio, Cristian y Jordi  
 **Fecha:** Octubre 2026
