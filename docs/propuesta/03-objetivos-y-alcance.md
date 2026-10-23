@@ -23,13 +23,10 @@ La estrategia de datos se rige por la consistencia, la geolocalización dirigida
 - Usuarios estrictamente de la provincia de Cádiz, 
 - Se almacenará exclusivamente: Nombre, correo electrónico, contraseña encriptada, nivel de juego y datos de los polideportivos.
 ### Lo que no haremos
-  | Qué | Por qué |  
-  
-Reserva de pistas en la aplicación:
-  - Finalmente hemos decidido eliminar la opción de reserva dentro de la aplicación, esto hace que nuestra app sea una plataforma de organización de partidos
-
-Algoritmo de Matchmaking basado en Inteligencia Artificial: 
-  - No se programará ya que la asignación de niveles se basará en filtros relacionales simples introducidos por el propio usuario.
+| Qué | Por qué |
+| :--- | :--- |
+| **Reserva de pistas en la aplicación** | Finalmente hemos decidido eliminar la opción de reserva dentro de la aplicación, esto hace que nuestra app sea una plataforma de organización de partidos. |
+| **Algoritmo de Matchmaking basado en Inteligencia Artificial** | No se programará ya que la asignación de niveles se basará en filtros relacionales simples introducidos por el propio usuario. |
 ### Ampliaciones futuras   (lista numerada, en orden)
 Si se dispusiera de más tiempo la primera idea a implementar sería:
 - Un sistema de chat multimedia en tiempo real para que los jugadores puedan organizar bien los partidos dentro de nuestra aplicación.
