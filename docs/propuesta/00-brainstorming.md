@@ -1,4 +1,4 @@
-# Brainstorming 
+# Brainstorming - Futlobby
 
 En este documento se escribe las ideas que tenemos cada uno.
 
