@@ -70,7 +70,7 @@ Para este tipo de aplicación (similar a Padel Mates, Timpik, Playtomic o MatchA
 
 Para simplificar la simulación, basaremos el cálculo en la métrica clave: 
 - Ingreso Medio por Partido Organizado y Monetizado (promedio de 1,50 € a 2,50 € netos por partido de 10-14 jugadores).
--
+
 ## 2. Escenarios de Recuperación de la Inversión (Payback)
 
 - Inversión Inicial a Recuperar: 31.827,60 €(Asumiendo un coste mensual recurrente posterior de servidores/mantenimiento de ~300 €/mes). 
