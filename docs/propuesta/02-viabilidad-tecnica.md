@@ -24,6 +24,16 @@ Para hacer realidad nuestra plataforma de organización de partidos de fútbol a
 | RF-16 | El usuario puede consultar el historial de partidos jugados y cobros/pagos realizados | Could |
 | RF-17 | El usuario puede visualizar la clasificación y ranking local de jugadores por zona | Won't |
 | RF-18 | El usuario puede reservar pistas de forma directa a través de la plataforma | Won't |
+| RF-19 | El usuario puede ver la lista completa de jugadores participantes inscritos en un partido | Should |
+| RF-20 | El organizador puede configurar si la inscripción al partido es automática o requiere aprobación manual por su parte | Should |
+| RF-21 | El usuario puede configurar su disponibilidad como portero en su perfil o al unirse (Sí, No, En caso necesario) | Should |
+| RF-22 | El organizador puede configurar si el partido se juega con porteros (hasta un máximo de 2 porteros por equipo) | Should |
+| RF-23 | El organizador puede crear partidos privados accesibles únicamente mediante enlace o código de invitación | Should |
+| RF-24 | El organizador puede elegir si los equipos se reparten de forma aleatoria o posicionar manualmente a los jugadores | Could |
+| RF-25 | Varios usuarios pueden apuntarse juntos como grupo para asegurar jugar en el mismo equipo | Could |
+| RF-26 | El sistema consulta disponibilidad de pistas externas mediante web scraping (solo lectura y consulta) | Could |
+| RF-27 | El usuario puede valorar individualmente a otros jugadores y enviar quejas/reportes sobre desajustes de nivel | Could |
+
 
 ### El MVP
 #### Recorrido
@@ -68,6 +78,9 @@ Para hacer realidad nuestra plataforma de organización de partidos de fútbol a
 | `contraseñaHash` | String | Sí | — |
 | `ciudad` | String | Sí | Permite filtrar/sugerir partidos locales |
 | `nivel` | String | Sí | Ej. `'Principiante'`, `'Intermedio'`, `'Avanzado'` |
+| `disponibilidadPortero` | String | Sí | Valores: `'si'`, `'no'`, `'si_es_necesario'` |
+
+
 
 
 #### Colección: pistas
@@ -94,9 +107,19 @@ Para hacer realidad nuestra plataforma de organización de partidos de fútbol a
 | `precioTotal` | Number | Sí | — |
 | `precioPorJugador` | Number | Sí | — |
 | `maximoJugadores` | Number | Sí | — |
-| `jugadoresConfirmados` | Array[Object] | No | Subdocumentos para gestionar inscripciones e inscritos individuales |
+| `esPrivado` | Boolean | Sí | — |
+| `codigoInvitacion` | String | No | Código único generado si `esPrivado` es `true` |
+| `aprobacionManual` | Boolean | Sí | — |
+| `conPortero` | Boolean | Sí | — |
+| `maxPorterosPorEquipo` | Number | No | — |
+| `tipoAsignacionEquipos` | String | Sí | Valores: `'aleatoria'`, `'manual'` |
+| `jugadoresConfirmados` | Array[Object] | No | — |
 | `jugadoresConfirmados.$.usuario_id` | ObjectId | Sí | Referencia (`ref`) a `usuarios` |
+| `jugadoresConfirmados.$.estadoInscripcion` | String | Sí | Valores: `'pendiente_aprobacion'`, `'aceptado'`, `'rechazado'` |
 | `jugadoresConfirmados.$.estadoPago` | String | Sí | Valores: `'pendiente'`, `'pagado'` (Por defecto: `'pendiente'`) |
+| `jugadoresConfirmados.$.rolPartido` | String | Sí | Valores: `'jugador'`, `'portero'` |
+| `jugadoresConfirmados.$.grupoId` | String | No | Identificador compartido si varios amigos se apuntan en grupo |
+| `jugadoresConfirmados.$.equipoAsignado` | String | No | Valores: `'Equipo A'`, `'Equipo B'`, `'Sin asignar'` |
 | `jugadoresConfirmados.$.fechaInscripcion` | Date | Sí | Fecha en la que se unió el jugador |
 | `estado` | String | No | Valores: `'abierta'`, `'completa'`, `'cancelada'` (Por defecto: `'abierta'`) |
 
@@ -130,3 +153,4 @@ Sí, el proyecto es viable y realista tras acotar el alcance del MVP, aunque req
 | Concurrencia (Dos usuarios reservando la última plaza a la vez) | Concurrencia en BD | Bloquear el documento del partido durante la actualización de plaza y aplicar restricciones atómicas. |
 | Suspensión del servidor gratuito en Render | Infraestructura | Enviar peticiones HTTP periódicas o pings al servidor para evitar que entre en modo spin-down. |
 | Falta de disponibilidad en tiempo real de las pistas deportivas | Negocio / Datos | Permitir la ubicación manual de pistas ya reservadas externamente y revisar alternativas para el futuro. |
+| Bloqueo o cambios estructurales en webs externas al usar scraping | Datos / Externo | Limitar el scraping estrictamente a consultas puntuales de disponibilidad, implementar caché temporal y manejar errores con fallback manual. |
